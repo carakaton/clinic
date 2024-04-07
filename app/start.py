@@ -2,7 +2,7 @@ import asyncio
 
 from aiogram import Bot, Dispatcher
 
-from app.make_an_appointment import router as make_an_appointment_router
+from app.appointments.make_an_appointment import router as make_an_appointment_router
 from config import BOT_TOKEN
 
 

@@ -1,15 +1,6 @@
 from typing import Self
 
 
-class ObjectGroup:
-
-    def __init__(self):
-        self._items = []
-
-    def __contains__(self, item):
-        return item in map(str, self._items)
-
-
 class Speciality:
     _specialities = {'Стоматолог', 'Дермотолог', 'Окулист'}
 

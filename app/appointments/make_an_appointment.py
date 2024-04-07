@@ -37,7 +37,7 @@ router = Router()
 
 
 @router.message(Command('make_an_appointment'), StateFilter(None))
-async def on_start(message: Message, state: FSMContext):
+async def on_make_an_appointment(message: Message, state: FSMContext):
     specialities = await fake_db.Speciality.get_many()
     await message.answer(text=T_D1, reply_markup=make_row_keyboard(specialities))
     await state.set_state(MakeAppointmentStates.choosing_speciality)
@@ -88,7 +88,7 @@ async def on_choosing_date(message: Message, state: FSMContext):
 
 
 @router.message(MakeAppointmentStates.choosing_time)
-async def on_choosing_time(message: Message, state: FSMContext):
+async def on_chosen_time(message: Message, state: FSMContext):
     data = await state.get_data()
     times = await fake_db.Time.get_many(data['speciality'], data['doctor'], data['date'])
     if message.text not in map(str, times):
