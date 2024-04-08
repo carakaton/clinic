@@ -1,31 +1,11 @@
-from typing import Sequence
-
 from aiogram import Router
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from aiogram.types import Message, ReplyKeyboardRemove
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 
-from app.storage import Patient, Speciality, Doctor, Appointment, AppointmentPlace
-
-
-T_CANCEL = '\nОтменить: /cancel'
-T_WHICH_SPECIALITY = 'К врачу какой специальности Вы бы хотели записаться?' + T_CANCEL
-T_WHICH_DOCTOR = 'Хорошо. Теперь, пожалуйста, выберите врача.' + T_CANCEL
-T_WHICH_DATE = 'Хорошо. Теперь, пожалуйста, выберите дату.' + T_CANCEL
-T_WHICH_TIME = 'Хорошо. Теперь, пожалуйста, выберите время.' + T_CANCEL
-T_ALL_DONE = 'Отлично! Мы записали Вас к {speciality} {doctor}, {date} на {time}'
-T_WRONG_INPUT = 'Такого варианта нет. Пожалуйста, выберите вариант из клавиатуры!' + T_CANCEL
-
-
-def make_keyboard(items: Sequence, count_in_row=5) -> ReplyKeyboardMarkup:
-    rows = [items[i:i + count_in_row] for i in range(0, len(items), count_in_row)]
-    keyboard = [[KeyboardButton(text=str(item)) for item in r] for r in rows]
-    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
-
-
-async def send_variant_is_wrong(message: Message, variants: Sequence):
-    await message.answer(text=T_WRONG_INPUT, reply_markup=make_keyboard(variants))
+from app.storage import Patient, Speciality, Doctor, VisitDate
+from app.utils import answer_with_keyboard, answer_no_such_button
 
 
 class MakeAppointmentStates(StatesGroup):
@@ -40,66 +20,68 @@ router = Router()
 
 @router.message(Command('make_an_appointment'), StateFilter(None))
 async def on_make_an_appointment(message: Message, state: FSMContext):
+
     specialities = await Speciality.get_all()
-    await message.answer(text=T_WHICH_SPECIALITY, reply_markup=make_keyboard(specialities))
+
     await state.set_state(MakeAppointmentStates.choosing_speciality)
+
+    await answer_with_keyboard(message, text='К врачу какой специальности Вы бы хотели записаться?',
+                               kb_objects=specialities, count_in_row=3)
 
 
 @router.message(MakeAppointmentStates.choosing_speciality)
 async def on_choosing_speciality(message: Message, state: FSMContext):
-    specialities = await Speciality.get_all()
-    if message.text not in map(str, specialities):
-        return await send_variant_is_wrong(message, specialities)
 
-    speciality = [s for s in specialities if str(s) == message.text][0]
+    specialities = await Speciality.get_all()
+    if not (speciality := specialities.filter_one_by_str(message.text)):
+        return await answer_no_such_button(message, specialities, count_in_row=3)
+
     await state.update_data(speciality=speciality)
+    await state.set_state(MakeAppointmentStates.choosing_doctor)
 
     doctors = await Doctor.filter(speciality=speciality)
-    await message.answer(text=T_WHICH_DOCTOR, reply_markup=make_keyboard(doctors, count_in_row=3))
-    await state.set_state(MakeAppointmentStates.choosing_doctor)
+    await answer_with_keyboard(message, text='Хорошо. Теперь, пожалуйста, выберите врача.',
+                               kb_objects=doctors, count_in_row=3)
 
 
 @router.message(MakeAppointmentStates.choosing_doctor)
-async def on_choosing_doctor(message: Message, state: FSMContext):
-    data = await state.get_data()
-    doctors = await Doctor.filter(speciality=data['speciality'])
-    if message.text not in map(str, doctors):
-        return await send_variant_is_wrong(message, doctors)
+async def on_choosing_doctor(message: Message, state: FSMContext, speciality: Speciality):
 
-    doctor = [d for d in doctors if str(d) == message.text][0]
+    doctors = await Doctor.filter(speciality=speciality)
+    if not (doctor := doctors.filter_one_by_str(message.text)):
+        return await answer_no_such_button(message, doctors, count_in_row=3)
+
     await state.update_data(doctor=doctor)
-
-    date_strings = await AppointmentPlace.get_not_busy_date_strings_for(doctor)
-    await message.answer(text=T_WHICH_DATE, reply_markup=make_keyboard(date_strings))
     await state.set_state(MakeAppointmentStates.choosing_date)
+
+    visit_dates = doctor.get_free_visit_dates()
+    await answer_with_keyboard(message, text='Хорошо. Теперь, пожалуйста, выберите дату.',
+                               kb_objects=visit_dates)
 
 
 @router.message(MakeAppointmentStates.choosing_date)
-async def on_choosing_date(message: Message, state: FSMContext):
-    data = await state.get_data()
-    date_strings = await AppointmentPlace.get_not_busy_date_strings_for(data['doctor'])
-    if message.text not in date_strings:
-        return await send_variant_is_wrong(message, date_strings)
+async def on_choosing_date(message: Message, state: FSMContext, doctor: Doctor):
 
-    date_string = [d for d in date_strings if d == message.text][0]
-    await state.update_data(date=date_string)
+    visit_dates = doctor.get_free_visit_dates()
+    if not (visit_date := visit_dates.filter_one_by_str(message.text)):
+        return await answer_no_such_button(message, visit_dates)
 
-    places = await AppointmentPlace.filter(doctor=data['doctor'], date_string=date_string, is_busy=False)
-    time_strings = [place.time_string for place in places]
-    await message.answer(text=T_WHICH_TIME, reply_markup=make_keyboard(time_strings))
+    await state.update_data(visit_date=visit_date)
     await state.set_state(MakeAppointmentStates.choosing_time)
+
+    visit_times = doctor.get_free_visit_times(visit_date.timestamp)
+    await answer_with_keyboard(message, text='Хорошо. Теперь, пожалуйста, выберите время.',
+                               kb_objects=visit_times)
 
 
 @router.message(MakeAppointmentStates.choosing_time)
-async def on_chosen_time(message: Message, state: FSMContext, patient: Patient):
-    data = await state.get_data()
-    places = await AppointmentPlace.filter(doctor=data['doctor'], date_string=data['date'], is_busy=False)
-    time_strings = [place.time_string for place in places]
-    if message.text not in time_strings:
-        return await send_variant_is_wrong(message, time_strings)
+async def on_chosen_time(message: Message, state: FSMContext, patient: Patient, doctor: Doctor, visit_date: VisitDate):
 
-    place = [p for p in places if p.time_string == message.text][0]
-    await Appointment(patient, data['doctor'], place).create()
+    visit_times = doctor.get_free_visit_times(date=visit_date.timestamp)
+    if not (visit_time := visit_times.filter_one_by_str(message.text)):
+        return await answer_no_such_button(message, visit_times)
 
-    await message.answer(text=T_ALL_DONE.format(**data, time=place.time_string), reply_markup=ReplyKeyboardRemove())
     await state.clear()
+
+    visit = await doctor.add_visit(patient, visit_time.timestamp)
+    await message.answer(text=f'Отлично! Мы записали Вас к {visit}', reply_markup=ReplyKeyboardRemove())

@@ -1,4 +1,4 @@
-from typing import Self, Sequence
+from typing import Self, Iterable
 
 
 class FakeModelMeta(type):
@@ -8,6 +8,19 @@ class FakeModelMeta(type):
         new_class._instances = {}
         new_class._counter = -1
         return new_class
+
+
+class Many[T](list[T]):
+
+    def __init__(self, objects: Iterable[T]):
+        super().__init__(objects)
+
+    def as_strs(self) -> list[str]:
+        return list(map(str, self.copy()))
+
+    def filter_one_by_str(self, string: str) -> T | None:
+        found = [i for i in self if str(i) == string]
+        return found[0] if found else None
 
 
 class FakeModel(metaclass=FakeModelMeta):
@@ -31,12 +44,12 @@ class FakeModel(metaclass=FakeModelMeta):
         return cls._instances.get(id_)
 
     @classmethod
-    async def get_all(cls) -> Sequence[Self]:
-        return list(cls._instances.values())
+    async def get_all(cls) -> Many[Self]:
+        return Many(list(cls._instances.values()))
 
     @classmethod
-    async def filter(cls, **filters) -> Sequence[Self]:
-        return [i for i in cls._instances.values() if i._pass_filters(filters)]
+    async def filter(cls, **filters) -> Many[Self]:
+        return Many(i for i in cls._instances.values() if i._pass_filters(filters))
 
     def _pass_filters(self, filters):
         for key, value in filters.items():

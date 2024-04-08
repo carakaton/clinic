@@ -28,7 +28,7 @@ async def on_existing_user_start(msg: Message):
 async def on_new_user_start(msg: Message, state: FSMContext):
     hello_message = as_section(
         Bold(f'Вы у нас в первый раз, {msg.from_user.first_name}?'),
-        'Пора завести медкарту! Отправьте нам номер вашего полиса, пожалуйста',
+        'Пора завести медкарту! Отправьте нам номер вашего полиса, пожалуйста.\n',
         'Вот пример:',
     )
 

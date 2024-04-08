@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 
-def get_14_days():
+def get_next_14_work_days_timestamps():
     now = datetime.now()
     d = datetime(year=now.year, month=now.month, day=now.day)
     days = [d]
@@ -12,7 +12,7 @@ def get_14_days():
     return days[:14]
 
 
-def get_8to20_times(dt: datetime):
+def get_visit_timestamps_for_full_work_day(dt: datetime):
     dt += timedelta(hours=8, minutes=0)
     times = [dt]
     for _ in range(47):
