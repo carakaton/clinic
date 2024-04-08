@@ -10,7 +10,7 @@ router = Router()
 
 @router.message(Command('upcoming_tests'))
 async def on_upcoming_tests(msg: Message, patient: Patient):
-    tests = await TestVisit.get_all_for(patient)
+    tests = await TestVisit.filter(patient=patient)
 
     if not tests:
         return await msg.answer('У вас не запланировано сдачи анализов...')

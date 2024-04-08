@@ -1,27 +1,9 @@
 from datetime import datetime
-from dataclasses import dataclass
 
 from app.utils import get_next_14_work_days_timestamps, get_visit_timestamps_for_full_work_day
 from .base import FakeModel, Many
 from .models import Patient
-
-
-@dataclass
-class VisitDate:
-
-    timestamp: datetime
-
-    def __str__(self):
-        return self.timestamp.strftime('%d.%m')
-
-
-@dataclass
-class VisitTime:
-
-    timestamp: datetime
-
-    def __str__(self):
-        return self.timestamp.strftime('%H:%M')
+from .visit_datetime import VisitDate, VisitTime
 
 
 class Speciality(FakeModel):

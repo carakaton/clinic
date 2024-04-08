@@ -2,7 +2,7 @@ import asyncio
 from aiogram import Bot
 
 from app.handling import dispatcher
-from app.storage import Speciality, Doctor
+from app.storage import Speciality, Doctor, TestType, Laboratory
 from config import BOT_TOKEN
 
 
@@ -20,6 +20,18 @@ async def create_data():
     doctors = [await Doctor(name, spec).create()
                for spec, names in zip(specialities, name_groups)
                for name in names]
+
+    test_types = [await TestType(name).create()
+                  for name in ['Сдача крови', 'МРТ']]
+
+    name_groups = [
+        ['Клиника №21', 'Клиника №2', 'Клиника №11'],
+        ['Клиника №1', 'Клиника №2'],
+    ]
+
+    labs = [await Laboratory(name, test).create()
+            for test, names in zip(test_types, name_groups)
+            for name in names]
 
 
 async def main():

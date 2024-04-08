@@ -1,14 +1,14 @@
 from .models import Patient
-
-from .doctor_visiting import Speciality, Doctor, DoctorVisit, VisitDate, VisitTime
-from .test_visit import TestType, Test, TestVisit
+from .doctor_visiting import Speciality, Doctor, DoctorVisit
+from .test_visit import TestType, Laboratory, TestVisit
+from .visit_datetime import VisitDate, VisitTime
 
 
 __all__ = (
     'Patient',
     'DoctorVisit',
     'TestVisit',
-    'Test',
+    'Laboratory',
     'Doctor',
     'Speciality',
     'TestType',
