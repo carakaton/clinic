@@ -18,10 +18,9 @@ T_ALL_DONE = 'Отлично! Мы записали Вас к {speciality} {doct
 T_WRONG_INPUT = 'Такого варианта нет. Пожалуйста, выберите вариант из клавиатуры!' + T_CANCEL
 
 
-def make_keyboard(items: Sequence) -> ReplyKeyboardMarkup:
-    chunk_size = 5
-    chunks = [items[i:i + chunk_size] for i in range(0, len(items), chunk_size)]
-    keyboard = [[KeyboardButton(text=str(item)) for item in c] for c in chunks]
+def make_keyboard(items: Sequence, count_in_row=5) -> ReplyKeyboardMarkup:
+    rows = [items[i:i + count_in_row] for i in range(0, len(items), count_in_row)]
+    keyboard = [[KeyboardButton(text=str(item)) for item in r] for r in rows]
     return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
 
 
@@ -56,7 +55,7 @@ async def on_choosing_speciality(message: Message, state: FSMContext):
     await state.update_data(speciality=speciality)
 
     doctors = await Doctor.filter(speciality=speciality)
-    await message.answer(text=T_WHICH_DOCTOR, reply_markup=make_keyboard(doctors))
+    await message.answer(text=T_WHICH_DOCTOR, reply_markup=make_keyboard(doctors, count_in_row=3))
     await state.set_state(MakeAppointmentStates.choosing_doctor)
 
 

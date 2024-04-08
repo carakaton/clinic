@@ -10,12 +10,13 @@ from config import BOT_TOKEN
 
 async def create_data():
     specialities = [await Speciality(name).create()
-                    for name in ['Стоматолог', 'Дермотолог', 'Окулист']]
+                    for name in ['Стоматолог', 'Дермотолог', 'Окулист', 'Практолог']]
 
     name_groups = [
         ['Иванов', 'Петров', 'Вылцан'],
-        ['Путин', 'Брикоткин', 'Слава Мерлоу'],
-        ['Максимов', 'Айтиев', 'Коряков']
+        ['Рожков', 'Брикоткин', 'Слава Мерлоу'],
+        ['Максимов', 'Айтиев'],
+        ['Коряков'],
     ]
 
     doctors = [await Doctor(name, spec).create()
