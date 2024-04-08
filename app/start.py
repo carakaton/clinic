@@ -3,7 +3,7 @@ from aiogram import Bot
 
 from app.handling import dispatcher
 from app.storage import Speciality, Doctor, TestType, Laboratory
-from config import BOT_TOKEN
+from app.config import BOT_TOKEN
 
 
 async def create_data():

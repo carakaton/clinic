@@ -18,4 +18,7 @@ def get_visit_timestamps_for_full_work_day(dt: datetime):
     for _ in range(47):
         dt += timedelta(minutes=15)
         times.append(dt)
+
+    now = datetime.now() + timedelta(minutes=5)
+    times = [t for t in times if t > now]
     return times
