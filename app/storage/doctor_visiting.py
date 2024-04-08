@@ -39,6 +39,10 @@ class Doctor(FakeModel):
         self.busy_visits[visit.timestamp] = visit
         return visit
 
+    async def remove_visit(self, visit: 'DoctorVisit') -> None:
+        del self.busy_visits[visit.timestamp]
+        await visit.delete()
+
     def __str__(self):
         return self.name
 

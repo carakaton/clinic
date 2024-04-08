@@ -34,6 +34,10 @@ class Laboratory(FakeModel):
         self.busy_visits[visit.timestamp] = visit
         return visit
 
+    async def remove_visit(self, visit: 'TestVisit') -> None:
+        del self.busy_visits[visit.timestamp]
+        await visit.delete()
+
     def __str__(self):
         return self.name
 

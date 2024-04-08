@@ -39,6 +39,10 @@ class FakeModel(metaclass=FakeModelMeta):
         self._instances[self.id] = self
         return self
 
+    async def delete(self) -> None:
+        del self._instances[self.id]
+        del self
+
     @classmethod
     async def get_by_id(cls, id_: int) -> Self | None:
         return cls._instances.get(id_)
