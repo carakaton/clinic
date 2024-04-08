@@ -2,7 +2,7 @@ from datetime import datetime
 
 from app.utils import get_next_14_work_days_timestamps
 from .base import FakeModel, Many
-from .models import Patient
+from .patient import Patient
 from .visit_datetime import VisitDate
 
 
@@ -22,7 +22,7 @@ class Laboratory(FakeModel):
         super().__init__()
         self.name = name
         self.test_type = test_type
-        self.busy_visits: dict[datetime: TestVisit] = {}
+        self.busy_visits: dict[datetime, TestVisit] = {}
 
     @staticmethod
     def get_free_visit_dates() -> Many[VisitDate]:

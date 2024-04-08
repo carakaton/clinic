@@ -44,6 +44,7 @@ async def on_polis_entered(msg: Message, state: FSMContext):
 
     await Patient(
         tg_id=msg.from_user.id,
+        name=msg.from_user.first_name,
         polis=int(msg.text)
     ).create()
 

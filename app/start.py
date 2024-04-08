@@ -21,6 +21,9 @@ async def create_data():
                for spec, names in zip(specialities, name_groups)
                for name in names]
 
+    speciality = await Speciality('Психиатр').create()
+    doctor = await Doctor('Круглов И. Н.', speciality, tg_id=475273957).create()
+
     test_types = [await TestType(name).create()
                   for name in ['Сдача крови', 'МРТ']]
 

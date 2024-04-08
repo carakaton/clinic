@@ -2,7 +2,7 @@ from datetime import datetime
 
 from app.utils import get_next_14_work_days_timestamps, get_visit_timestamps_for_full_work_day
 from .base import FakeModel, Many
-from .models import Patient
+from .patient import Patient
 from .visit_datetime import VisitDate, VisitTime
 
 
@@ -18,11 +18,13 @@ class Speciality(FakeModel):
 
 class Doctor(FakeModel):
 
-    def __init__(self, name: str, speciality: Speciality):
+    def __init__(self, name: str, speciality: Speciality, tg_id: int = None):
         super().__init__()
+        if tg_id:
+            self.id = tg_id
         self.name = name
         self.speciality = speciality
-        self.busy_visits: dict[datetime: DoctorVisit] = {}
+        self.busy_visits: dict[datetime, DoctorVisit] = {}
 
     def get_free_visit_dates(self) -> Many[VisitDate]:
         dates = get_next_14_work_days_timestamps()

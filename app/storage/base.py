@@ -51,6 +51,11 @@ class FakeModel(metaclass=FakeModelMeta):
     async def filter(cls, **filters) -> Many[Self]:
         return Many(i for i in cls._instances.values() if i._pass_filters(filters))
 
+    @classmethod
+    async def filter_one(cls, **filters) -> Self | None:
+        found = await cls.filter(**filters)
+        return found[0] if found else None
+
     def _pass_filters(self, filters):
         for key, value in filters.items():
             if self.__getattribute__(key) != value:
