@@ -19,14 +19,17 @@ router = Router()
 
 
 @router.message(Command('make_an_appointment'), StateFilter(None))
-async def on_make_an_appointment(message: Message, state: FSMContext):
+async def on_make_an_appointment(message: Message, state: FSMContext, patient: Patient):
 
-    specialities = await Speciality.get_all()
+    is_kid = not patient.is_old
+    specialities = await Speciality.filter(for_kids=is_kid, for_sex=None)
+    specialities.extend(await Speciality.filter(for_kids=None, for_sex=patient.sex))
+    specialities.extend(await Speciality.filter(for_kids=None, for_sex=None))
 
     await state.set_state(MakeAppointmentStates.choosing_speciality)
 
     await answer_with_keyboard(message, text='К врачу какой специальности Вы бы хотели записаться?',
-                               kb_objects=specialities, count_in_row=3)
+                               kb_objects=specialities, count_in_row=2)
 
 
 @router.message(MakeAppointmentStates.choosing_speciality)
@@ -34,7 +37,7 @@ async def on_choosing_speciality(message: Message, state: FSMContext):
 
     specialities = await Speciality.get_all()
     if not (speciality := specialities.filter_one_by_str(message.text)):
-        return await answer_no_such_button(message, specialities, count_in_row=3)
+        return await answer_no_such_button(message, specialities, count_in_row=2)
 
     await state.update_data(speciality=speciality)
     await state.set_state(MakeAppointmentStates.choosing_doctor)

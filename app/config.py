@@ -4,4 +4,5 @@ from os import getenv
 
 load_dotenv()
 
-BOT_TOKEN = getenv('BOT_TOKEN')
+CLIENT_BOT_TOKEN = getenv('CLIENT_BOT_TOKEN')
+DOCTOR_BOT_TOKEN = getenv('DOCTOR_BOT_TOKEN')

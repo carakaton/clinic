@@ -4,14 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10d383b-9dff-4c84-b7a4-b4b9c5d26981" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/clinic.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e10d383b-9dff-4c84-b7a4-b4b9c5d26981" name="Changes" comment="Dockerfile added">
+      <change afterPath="$PROJECT_DIR$/app/client/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/doctor/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/appointments/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/appointments/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/appointments/make_an_appointment.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/appointments/make_an_appointment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/appointments/upcoming_appointments.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/appointments/upcoming_appointments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/doctor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/doctor/doctor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/middlewares.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/registration/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/registration/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/registration/card.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/registration/card.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/registration/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/registration/register.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/reports/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/reports/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/reports/doctor_reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/reports/doctor_reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/tests/get_tested.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/tests/get_tested.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/handling/tests/upcoming_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/tests/upcoming_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/storage/doctor_visiting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/storage/doctor_visiting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/storage/patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/storage/patient.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,24 +42,100 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;carakaton&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/carakaton/clinic.git",
+    "accountId": "8c9be9c1-9aad-4bb4-93d7-112556b28d3e"
+  }
 }]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2ellToUw31SR8IzjbF07qSFs46Q" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.Dockerfile.executor": "Run",
+    "Python.doctor_reports.executor": "Run",
     "Python.start.executor": "Run",
+    "Python.visit_timestamps.executor": "Run",
+    "Python.еуые.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/carakaton/PycharmProjects/clinic/app/utils",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/client" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/doctor" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.start">
+    <configuration name="еуые" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="clinic" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/еуые.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="doctor_reports" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="clinic" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/client/reports" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/client/reports/doctor_reports.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="clinic" />
       <option name="ENV_FILES" value="" />
@@ -68,16 +158,50 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="visit_timestamps" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="clinic" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/utils/visit_timestamps.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.start" />
+        <item itemvalue="Python.doctor_reports" />
+        <item itemvalue="Docker.Dockerfile" />
+        <item itemvalue="Python.visit_timestamps" />
+        <item itemvalue="Python.еуые" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
       </set>
     </attachedChunks>
   </component>
@@ -90,6 +214,111 @@
       <option name="presentableId" value="Default" />
       <updated>1712487055977</updated>
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1712493282548</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712493282548</updated>
+    </task>
+    <task id="LOCAL-00002" summary="choosing from fake db implemented">
+      <option name="closed" value="true" />
+      <created>1712500343023</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712500343023</updated>
+    </task>
+    <task id="LOCAL-00003" summary="better structure added">
+      <option name="closed" value="true" />
+      <created>1712500866488</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712500866488</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Appointment is beauty and based on FakeModel">
+      <option name="closed" value="true" />
+      <created>1712527815702</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712527815702</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Better text constants">
+      <option name="closed" value="true" />
+      <created>1712552549464</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712552549464</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Card handler implemented">
+      <option name="closed" value="true" />
+      <created>1712586587665</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712586587665</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Storage __init__ fixed and some enchantments">
+      <option name="closed" value="true" />
+      <created>1712586645247</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712586645247</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Better visit system and appointment handlers">
+      <option name="closed" value="true" />
+      <created>1712596261390</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712596261390</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Laboratory tests implemented (plan and look up)">
+      <option name="closed" value="true" />
+      <created>1712597929555</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712597929555</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Doctor reporting base added">
+      <option name="closed" value="true" />
+      <created>1712600195490</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712600195490</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Doctor reporting finished and canceling visits by patient added">
+      <option name="closed" value="true" />
+      <created>1712607631828</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712607631828</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fix: Visit timestamps cant be before now">
+      <option name="closed" value="true" />
+      <created>1712613008577</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712613008577</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Dockerfile added">
+      <option name="closed" value="true" />
+      <created>1712613017279</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712613017279</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,5 +331,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <MESSAGE value="choosing from fake db implemented" />
+    <MESSAGE value="better structure added" />
+    <MESSAGE value="Appointment is beauty and based on FakeModel" />
+    <MESSAGE value="Better text constants" />
+    <MESSAGE value="Card handler implemented" />
+    <MESSAGE value="Storage __init__ fixed and some enchantments" />
+    <MESSAGE value="Better visit system and appointment handlers" />
+    <MESSAGE value="Laboratory tests implemented (plan and look up)" />
+    <MESSAGE value="Doctor reporting base added" />
+    <MESSAGE value="Doctor reporting finished and canceling visits by patient added" />
+    <MESSAGE value="Fix: Visit timestamps cant be before now" />
+    <MESSAGE value="Dockerfile added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dockerfile added" />
   </component>
 </project>

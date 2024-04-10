@@ -8,9 +8,11 @@ from .visit_datetime import VisitDate, VisitTime
 
 class Speciality(FakeModel):
 
-    def __init__(self, name: str):
+    def __init__(self, name: str, for_sex: int = None, for_kids: bool = None):
         super().__init__()
         self.name = name
+        self.for_kids = for_kids
+        self.for_sex = for_sex
 
     def __str__(self):
         return self.name
