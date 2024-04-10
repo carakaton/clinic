@@ -6,6 +6,8 @@ RUN pip install aiogram
 
 RUN pip install python-dotenv
 
+RUN pip install xhtml2pdf
+
 ADD ./app /app
 
 ADD ./app/start.py /

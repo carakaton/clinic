@@ -4,28 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10d383b-9dff-4c84-b7a4-b4b9c5d26981" name="Changes" comment="Dockerfile added">
-      <change afterPath="$PROJECT_DIR$/app/client/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/doctor/__init__.py" afterDir="false" />
+    <list default="true" id="e10d383b-9dff-4c84-b7a4-b4b9c5d26981" name="Changes" comment="Shit happens">
+      <change afterPath="$PROJECT_DIR$/app/client/registration/edit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/appointments/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/appointments/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/appointments/make_an_appointment.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/appointments/make_an_appointment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/appointments/upcoming_appointments.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/appointments/upcoming_appointments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/doctor.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/doctor/doctor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/middlewares.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/registration/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/registration/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/registration/card.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/registration/card.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/registration/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/registration/register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/reports/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/reports/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/reports/doctor_reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/reports/doctor_reports.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/tests/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/tests/get_tested.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/tests/get_tested.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/handling/tests/upcoming_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/tests/upcoming_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/client/registration/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/registration/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/client/tests/get_tested.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/client/tests/get_tested.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/storage/doctor_visiting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/storage/doctor_visiting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/storage/patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/storage/patient.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712613017279</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Shit happens">
+      <option name="closed" value="true" />
+      <created>1712781412670</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712781412670</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -346,6 +338,7 @@
     <MESSAGE value="Doctor reporting finished and canceling visits by patient added" />
     <MESSAGE value="Fix: Visit timestamps cant be before now" />
     <MESSAGE value="Dockerfile added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dockerfile added" />
+    <MESSAGE value="Shit happens" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shit happens" />
   </component>
 </project>

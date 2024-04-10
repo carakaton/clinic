@@ -25,7 +25,7 @@ async def on_get_tested(message: Message, state: FSMContext):
     await state.set_state(GetTestedStates.choosing_test_type)
 
     await answer_with_keyboard(message, text='Какой анализ Вы хотите сделать?',
-                               kb_objects=test_types, count_in_row=3)
+                               kb_objects=test_types, count_in_row=2)
 
 
 @router.message(GetTestedStates.choosing_test_type)
@@ -33,7 +33,7 @@ async def on_choosing_test_type(message: Message, state: FSMContext):
 
     test_types = await TestType.get_all()
     if not (test_type := test_types.filter_one_by_str(message.text)):
-        return await answer_no_such_button(message, test_types, count_in_row=3)
+        return await answer_no_such_button(message, test_types, count_in_row=2)
 
     await state.update_data(test_type=test_type)
     await state.set_state(GetTestedStates.choosing_laboratory)
