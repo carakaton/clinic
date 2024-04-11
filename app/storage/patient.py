@@ -16,7 +16,7 @@ class Patient(FakeModel):
             f'Данные о пациенте\n'
             f'Имя: {self.name}\n'
             f'Возраст: {self.age}\n'
-            f'Пол: {'Мужской' if self.sex == 1 else 'Женский'}\n'
+            f'Пол: {self.binary_sex_string}\n'
             f'Полис: {self.polis}'
         )
 

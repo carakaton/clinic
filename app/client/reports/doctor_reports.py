@@ -56,7 +56,7 @@ def make_pdf(report: Report):
     <p style="text-align: left;">Speciality: {report.doctor.speciality.name}</p>
     <hr />
     <p style="text-align: left;">Report</p>
-    <p style="text-align: left;">Text: {report.timestamp}</p>
+    <p style="text-align: left;">Text: {report.text}</p>
     <p style="text-align: left;">Data and time: {report.timestamp}</p>
     '''
 

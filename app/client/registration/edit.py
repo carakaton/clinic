@@ -62,10 +62,10 @@ async def on_entering_sex(msg: Message, state: FSMContext, polis: int, age: int)
         return await msg.answer('Неправильно указан пол, попробуйте еще раз.')
 
     patient = await Patient.get_by_id(msg.from_user.id)
-    patient.name = msg.from_user.id
+    patient.name = msg.from_user.first_name
     patient.polis = polis
     patient.age = age
-    patient.sex = 1 if msg.text == 'Мужской' else 0,
+    patient.sex = 1 if msg.text == 'Мужской' else 0
 
     await state.clear()
     await msg.answer('Ваша медкарта обновлена!',
